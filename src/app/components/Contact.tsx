@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -10,11 +11,39 @@ export function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    alert("Дякуємо за вашу заявку! Ми зв'яжемося з вами найближчим часом.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const serviceId = "service_wznwlmq";
+      const templateId = "template_7pt9ujb";
+      const publicKey = "c53ZwZ4HH1py6UIf2";
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        publicKey,
+      );
+
+      alert("Дякуємо за вашу заявку! Ми зв'яжемося з вами найближчим часом.");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error("Помилка відправки:", error);
+      alert(
+        "Виникла помилка при відправці. Будь ласка, спробуйте пізніше або зателефонуйте нам.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -43,7 +72,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 -z-10" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -z-10" />
@@ -65,7 +93,6 @@ export function Contact() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -93,7 +120,8 @@ export function Contact() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-input-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 rounded-xl bg-input-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all disabled:opacity-70"
                   placeholder="Ваше ім'я"
                 />
               </div>
@@ -113,7 +141,8 @@ export function Contact() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-input-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 rounded-xl bg-input-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all disabled:opacity-70"
                   placeholder="your@email.com"
                 />
               </div>
@@ -132,7 +161,8 @@ export function Contact() {
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-xl bg-input-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 rounded-xl bg-input-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all disabled:opacity-70"
                   placeholder="+380 XX XXX XX XX"
                 />
               </div>
@@ -152,22 +182,32 @@ export function Contact() {
                   }
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl bg-input-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 rounded-xl bg-input-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none disabled:opacity-70"
                   placeholder="Опишіть ваше питання..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-medium inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all group"
+                disabled={isSubmitting}
+                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-medium inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all group disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Відправити
-                <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Відправка...
+                  </>
+                ) : (
+                  <>
+                    Відправити
+                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </button>
             </form>
           </motion.div>
 
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

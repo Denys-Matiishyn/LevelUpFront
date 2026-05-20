@@ -40,7 +40,7 @@ export function Header() {
             <div className="hidden sm:block">
               <div className="font-bold text-xl text-foreground">LEVEL UP</div>
               <div className="text-xs text-muted-foreground">
-                Консультаційно- тренінговий центр
+                Консультаційно-тренінговий центр
               </div>
             </div>
           </Link>
