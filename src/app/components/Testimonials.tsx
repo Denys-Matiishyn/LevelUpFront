@@ -1,46 +1,36 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import { Star, Quote, MessageSquare, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export function Testimonials() {
-  const testimonials = [
+  const [testimonials, setTestimonials] = useState<
     {
-      name: "Олена М.",
-      role: "Клієнт центру",
-      text: "Звернулася до LEVEL UP в складний період мого життя. Психолог допоміг мені зрозуміти себе, пропрацювати внутрішні конфлікти та знайти сили рухатися далі. Дуже вдячна за професійну підтримку!",
-      rating: 5,
-    },
-    {
-      name: "Андрій К.",
-      role: "Учасник тренінгу",
-      text: "Проходив груповий тренінг з управління стресом. Отримав не тільки корисні техніки, а й підтримку від інших учасників. Атмосфера довіри та розуміння дозволила відкритися та працювати над собою.",
-      rating: 5,
-    },
-    {
-      name: "Марія В.",
-      role: "HR-менеджер",
-      text: "Замовляли корпоративну програму для нашої команди. Результат перевершив очікування - покращилася комунікація, зменшилася кількість конфліктів. Команда LEVEL UP - справжні професіонали!",
-      rating: 5,
-    },
-    {
-      name: "Дмитро П.",
-      role: "Клієнт центру",
-      text: "Довго не міг вирішитися на консультацію психолога, але зробив правильний вибір. Спеціаліст центру допоміг мені побачити ситуацію під іншим кутом та знайти рішення, про яке я навіть не думав.",
-      rating: 5,
-    },
-    {
-      name: "Тетяна С.",
-      role: "Учасниця тренінгу",
-      text: 'Тренінг з підвищення самооцінки змінив моє ставлення до себе. Навчилася цінувати себе, встановлювати межі та говорити "ні". Рекомендую всім, хто хоче стати впевненішим!',
-      rating: 5,
-    },
-    {
-      name: "Ігор Л.",
-      role: "Керівник компанії",
-      text: "Співпраця з LEVEL UP допомогла нам створити здорову робочу атмосферу. Програма з профілактики вигорання дала відчутні результати - продуктивність зросла, плинність кадрів зменшилась.",
-      rating: 5,
-    },
-  ];
+      id: number;
+      user_name: string;
+      comment: string;
+      rating: number;
+      role?: string;
+    }[]
+  >([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(import.meta.env.VITE_REVIEWS_URL)
+      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((data) => {
+        console.log("Дані з бекенду:", data); // Дивимось, що прийшло
+        const published = data.filter((r: any) => r.is_published === true);
+        setTestimonials(published);
+      })
+      .catch((error) => {
+        console.error("Помилка завантаження відгуків:", error); // Додав логування помилки на всякий випадок
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return null;
+  if (testimonials.length === 0) return null;
 
   return (
     <section className="py-20 lg:py-32 bg-background">
@@ -63,7 +53,7 @@ export function Testimonials() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
-              key={testimonial.name}
+              key={testimonial.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -81,18 +71,18 @@ export function Testimonials() {
               </div>
 
               <p className="text-foreground/80 mb-6 leading-relaxed relative z-10">
-                "{testimonial.text}"
+                "{testimonial.comment}"
               </p>
 
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
-                  {testimonial.name.charAt(0)}
+                  {testimonial.user_name.charAt(0)}
                 </div>
                 <div>
                   <div className="font-bold text-foreground">
-                    {testimonial.name}
+                    {testimonial.user_name}
                   </div>
-                  <div className="text-sm text-foreground/60">
+                  <div className="text-sm text-foreground/70">
                     {testimonial.role}
                   </div>
                 </div>
