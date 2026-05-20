@@ -5,3 +5,20 @@ ATTRIBUTIONS.md
 Guidelines.mdbackend/.env
 .env
 backend/
+node_modules/
+
+# Папка зі згенерованим продакшн-білдом (Vite створює папку dist)
+dist/
+dist-ssr/
+
+# Варіації файлів середовища (щоб випадково не запушити специфічні локальні ключі)
+*.local
+
+# Логи помилок пакетних менеджерів
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Системні файли OS (особливо актуально, якщо хтось із команди працює на Mac)
+.DS_Store
