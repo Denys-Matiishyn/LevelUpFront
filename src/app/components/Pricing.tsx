@@ -7,7 +7,7 @@ export function Pricing() {
   const plans = [
     {
       title: "Індивідуальна сесія",
-      price: "від 2500",
+      price: "2500",
       description: "Персональна психологічна підтримка",
       features: [
         "Тривалість: 45-50 хвилин",
@@ -20,7 +20,7 @@ export function Pricing() {
     },
     {
       title: "Дитячий психолог",
-      price: "від 2500",
+      price: "2500",
       description: "Консультації для дітей та підлітків",
       features: [
         "Тривалість: 45-50 хвилин",
@@ -33,7 +33,7 @@ export function Pricing() {
     },
     {
       title: "Сімейна пара/сім'я",
-      price: "від 3500",
+      price: "3500",
       description: "Консультації для подружжя та сімей",
       features: [
         "Тривалість: 45-50 хвилин",
@@ -46,7 +46,7 @@ export function Pricing() {
     },
     {
       title: "Онлайн консультація",
-      price: "від 2000",
+      price: "2000",
       description: "Психологічна підтримка онлайн",
       features: [
         "Тривалість: 45-50 хвилин",
@@ -59,7 +59,7 @@ export function Pricing() {
     },
     {
       title: "Коучинг",
-      price: "від 3000",
+      price: "3000",
       description: "Професійний коучинг для розвитку",
       features: [
         "Тривалість: 45-50 хвилин",
@@ -72,7 +72,7 @@ export function Pricing() {
     },
     {
       title: "Групова консультація",
-      price: "від 800",
+      price: "800",
       description: "Інтерактивні групові заняття",
       features: [
         "Тривалість: 2-3 години",
@@ -85,7 +85,7 @@ export function Pricing() {
     },
     {
       title: "Соціальна робота",
-      price: "від 600",
+      price: "600",
       description: "Соціально-психологічна підтримка",
       features: [
         "Тривалість: 45-50 хвилин",
@@ -98,7 +98,7 @@ export function Pricing() {
     },
     {
       title: "Консультація керівника центру",
-      price: "від 5500",
+      price: "5500",
       description: "Професійна консультація експерта",
       features: [
         "Тривалість: 45-50 хвилин",

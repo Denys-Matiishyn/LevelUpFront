@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import olgaImage from "/src/app/components/figma/Olga Kolodchak.jpg";
 import {
   GraduationCap,
   Award,
@@ -21,16 +22,16 @@ export default function CVForm() {
       email: "ctc.level.up.lviv@gmail.com",
       phone: "+380 67 962 5843",
       location: "Україна",
-      experience: "15+ років досвіду",
+      experience: "10+ років досвіду",
     },
     summary:
-      "Практикуючий психолог з понад 15-річним досвідом роботи, спеціалізація на сімейній психології, консультуванні дорослих та дітей. Засновниця тренінгово-консультаційного центру LEVEL UP. Експерт у роботі з сімейними відносинами, дитячо-батьківськими стосунками, кризовими станами та особистісним зростанням.",
+      "Практикуючий психолог з понад 10-річним досвідом роботи, спеціалізація на сімейній психології, консультуванні дорослих та дітей. Засновниця тренінгово-консультаційного центру LEVEL UP. Експерт у роботі з сімейними відносинами, дитячо-батьківськими стосунками, кризовими станами та особистісним зростанням.",
     education: [
       {
-        degree: "Магістр психології",
-        institution: "Львівський національний університет імені Івана Франка",
-        specialization: "Психологія",
-        graduated: "2008",
+        degree: "Спеціаліст",
+        institution: "Міжрегіональна академія управління персоналом",
+        specialization: "Практична психологія",
+        graduated: "2017",
       },
     ],
     certifications: [
@@ -130,7 +131,7 @@ export default function CVForm() {
                 <div className="flex-shrink-0">
                   <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-2xl mb-6 ring-4 ring-primary/20">
                     <img
-                      src="/src/app/components/figma/Olga Kolodchak.jpg"
+                      src={olgaImage}
                       alt="Ольга Колодчак"
                       className="w-full h-full object-cover object-[center_5%]"
                     />

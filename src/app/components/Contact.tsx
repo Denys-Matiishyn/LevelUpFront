@@ -50,22 +50,22 @@ export function Contact() {
     {
       icon: Phone,
       label: "Телефон",
-      value: "+380 (98) 123 45 67",
-      href: "tel:+380981234567",
+      value: "+380 (67) 962 5843",
+      href: "tel:+380679625843",
       gradient: "from-primary to-cyan-400",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "levelup@gmail.com",
-      href: "mailto:levelup@gmail.com",
+      value: "ctc.level.up.lviv@gmail.com",
+      href: "mailto:ctc.level.up.lviv@gmail.com",
       gradient: "from-primary to-cyan-400",
     },
     {
       icon: MapPin,
       label: "Адреса",
-      value: "Львів, вул. Володимира Великого, 15",
-      href: "#",
+      value: "Львів, вул. В'ячеслава Чорновола, 63",
+      href: "https://share.google/oc5U0T70Zasdim6ys",
       gradient: "from-primary to-cyan-400",
     },
   ];

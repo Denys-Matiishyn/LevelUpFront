@@ -1,7 +1,7 @@
-import { motion } from 'motion/react';
-import { Link } from 'react-router';
-import { ArrowRight, Sparkles, CheckCircle } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { motion } from "motion/react";
+import { Link } from "react-router";
+import { ArrowRight, Sparkles, CheckCircle } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function Hero() {
   return (
@@ -90,7 +90,7 @@ export function Hero() {
                   transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: 'easeInOut',
+                    ease: "easeInOut",
                   }}
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full"
                 >
@@ -104,27 +104,28 @@ export function Hero() {
                     alt="Психологічні тести"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  
+
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
-                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/90 to-transparent" />
+
                   {/* Content overlay */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 z-10">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-accent to-yellow-400 flex items-center justify-center mb-4 shadow-lg"
+                      className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 mx-auto rounded-full bg-gradient-to-br from-accent to-yellow-400 flex items-center justify-center mb-3 sm:mb-4 shadow-lg"
                     >
-                      <CheckCircle className="w-12 h-12 text-white" />
+                      <CheckCircle className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
                     </motion.div>
-                    
+
                     <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg">
                       Пройди психологічний тест
                     </h3>
-                    
+
                     <p className="text-white/90 text-lg mb-6 max-w-md drop-shadow">
-                      3 інтерактивні тести для самопізнання та особистісного зростання
+                      3 інтерактивні тести для самопізнання та особистісного
+                      зростання
                     </p>
-                    
+
                     <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-primary font-medium group-hover:bg-primary group-hover:text-white transition-all shadow-lg">
                       Перейти до тестів
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -141,7 +142,7 @@ export function Hero() {
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    ease: 'easeInOut',
+                    ease: "easeInOut",
                   }}
                   className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl bg-gradient-to-br from-accent to-secondary shadow-lg flex items-center justify-center"
                 >
@@ -156,7 +157,7 @@ export function Hero() {
                   transition={{
                     duration: 3.5,
                     repeat: Infinity,
-                    ease: 'easeInOut',
+                    ease: "easeInOut",
                     delay: 0.5,
                   }}
                   className="absolute -bottom-4 -left-4 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg flex items-center justify-center"

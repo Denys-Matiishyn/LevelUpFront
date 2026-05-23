@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router";
+import olgaImage from "/src/app/components/figma/Olga Kolodchak.jpg";
 import {
   Heart,
   Users,
@@ -220,7 +221,7 @@ export default function About() {
                   <div className="text-center">
                     <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-2xl mb-6 ring-4 ring-primary/20">
                       <img
-                        src="/src/app/components/figma/Olga Kolodchak.jpg"
+                        src={olgaImage}
                         alt="Ольга Колодчак"
                         className="w-full h-full object-cover object-[center_5%]"
                       />
