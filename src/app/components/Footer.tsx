@@ -146,7 +146,14 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-white/70">
                 <MapPin className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                <span>Львів, вул. В'ячеслава Чорновола, 63</span>
+                <a
+                  href="https://maps.google.com/?q=Львів, вул. В'ячеслава Чорновола, 63"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Львів, вул. В'ячеслава Чорновола, 63
+                </a>
               </li>
             </ul>
           </div>

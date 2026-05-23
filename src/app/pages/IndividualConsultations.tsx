@@ -110,7 +110,7 @@ export default function IndividualConsultations() {
       price: "3000",
     },
     {
-      title: "Тінейджер на МІЛЬЙОН: Профорієнтація 3.0",
+      title: "Архітектор майбутнього",
       description: "Формат на вибір: наживо або онлайн",
       features: [
         "Тривалість: 4 тижні (1 заняття по 1,5 год на тиждень)",
@@ -356,18 +356,11 @@ export default function IndividualConsultations() {
                 </div>
 
                 <div className="pt-6 border-t border-border">
-                  <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-4xl font-bold text-foreground">
-                      {format.price.split(" ")[0]}
-                    </span>
-                    <span className="text-foreground/70">грн</span>
-                  </div>
-
                   <Link
-                    to="/contact"
+                    to="/pricing"
                     className="block w-full px-6 py-3 rounded-xl bg-gradient-to-br from-primary to-cyan-400 text-white font-medium text-center hover:shadow-lg transition-all"
                   >
-                    Записатись
+                    Переглянути ціни
                   </Link>
                 </div>
               </motion.div>

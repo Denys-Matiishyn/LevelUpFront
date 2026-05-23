@@ -78,7 +78,8 @@ export default function GroupTrainings() {
       price: "2100 грн",
     },
     {
-      title: "Тінейджер на МІЛЬЙОН: Профорієнтація 3.0",
+      title:
+        "Архітектор майбутнього: Як підлітку подолати страх помилок, знайти друзів та обрати професію",
       duration:
         "4 тижні (інтенсивна прокачка - 1 заняття по 1,5 год на тиждень)",
       size: "До 8 учасників (наживо або онлайн)",
@@ -278,19 +279,11 @@ export default function GroupTrainings() {
                 </div>
 
                 <div className="pt-6 border-t border-border flex items-center justify-between">
-                  <div>
-                    <div className="text-sm text-foreground/60 mb-1">
-                      Вартість програми
-                    </div>
-                    <div className="text-2xl font-bold text-foreground">
-                      {training.price}
-                    </div>
-                  </div>
                   <Link
-                    to="/contact"
+                    to="/pricing"
                     className="px-6 py-3 rounded-xl bg-gradient-to-r from-secondary to-accent text-white font-medium hover:shadow-lg transition-all"
                   >
-                    Записатись
+                    Переглянути ціни
                   </Link>
                 </div>
               </motion.div>
