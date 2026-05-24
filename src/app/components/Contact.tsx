@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2, Facebook } from "lucide-react";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
@@ -66,6 +66,13 @@ export function Contact() {
       label: "Адреса",
       value: "Львів, вул. В'ячеслава Чорновола, 63",
       href: "https://share.google/oc5U0T70Zasdim6ys",
+      gradient: "from-primary to-cyan-400",
+    },
+    {
+      icon: Facebook,
+      label: "Facebook",
+      value: "olhakolodchak",
+      href: "https://www.facebook.com/olhakolodchak/",
       gradient: "from-primary to-cyan-400",
     },
   ];

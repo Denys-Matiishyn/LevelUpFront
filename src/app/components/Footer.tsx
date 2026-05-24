@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Heart, Mail, Phone, MapPin } from "lucide-react";
+import { Heart, Mail, Phone, MapPin, Facebook } from "lucide-react";
 
 export function Footer() {
   return (
@@ -153,6 +153,17 @@ export function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   Львів, вул. В'ячеслава Чорновола, 63
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-white/70">
+                <Facebook className="w-4 h-4 text-primary" />
+                <a
+                  href="https://www.facebook.com/olhakolodchak/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  olhakolodchak
                 </a>
               </li>
             </ul>

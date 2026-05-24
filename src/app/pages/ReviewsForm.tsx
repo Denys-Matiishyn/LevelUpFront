@@ -20,19 +20,19 @@ export default function ReviewsForm() {
   const [hoveredRating, setHoveredRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    fetch(import.meta.env.VITE_REVIEWS_URL)
-      .then((res) => {
-        if (!res.ok) throw new Error();
-        return res.json();
-      })
-      .then((data) => {
-        const published = data.filter((r: any) => r.is_published === true);
-        setReviews(published);
-      })
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
-  }, []);
+  // useEffect(() => {
+  //   fetch(import.meta.env.VITE_REVIEWS_URL)
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error();
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       const published = data.filter((r: any) => r.is_published === true);
+  //       setReviews(published);
+  //     })
+  //     .catch(() => setError(true))
+  //     .finally(() => setLoading(false));
+  // }, []);
 
   const services = [
     "Індивідуальна консультація",
