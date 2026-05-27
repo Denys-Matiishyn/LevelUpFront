@@ -19,7 +19,6 @@ export function Testimonials() {
     fetch(import.meta.env.VITE_REVIEWS_URL)
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((data) => {
-        console.log("Дані з бекенду:", data); // Дивимось, що прийшло
         const published = data.filter((r: any) => r.is_published === true);
         setTestimonials(published);
       })
