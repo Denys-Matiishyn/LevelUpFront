@@ -234,7 +234,7 @@ export default function About() {
                         Психолог, засновниця та керівник центру LEVEL UP
                       </p>
                       <p className="text-sm text-foreground/60">
-                        15+ років досвіду
+                        10+ років досвіду
                       </p>
                     </div>
                   </div>

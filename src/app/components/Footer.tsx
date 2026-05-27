@@ -116,9 +116,6 @@ export function Footer() {
                   Корпоративні програми
                 </Link>
               </li>
-              <li>
-                <span className="text-white/70">Онлайн консультації</span>
-              </li>
             </ul>
           </div>
 

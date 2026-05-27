@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { MessageCircle, X, Send, Bot } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { MessageCircle, X, Send, Bot } from "lucide-react";
 
 interface Message {
   id: number;
@@ -14,53 +14,78 @@ export function AIChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: 'Вітаю! Я AI-помічник LEVEL UP. Чим можу вам допомогти?',
+      text: "Вітаю! Я AI-помічник LEVEL UP. Чим можу вам допомогти?",
       isBot: true,
       timestamp: new Date(),
     },
   ]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [suggestedQuestions, setSuggestedQuestions] = useState<string[]>([]);
 
   const quickReplies = [
-    'Які послуги ви надаєте?',
-    'Скільки коштує консультація?',
-    'Як записатись на прийом?',
-    'Графік роботи',
+    "Які послуги ви надаєте?",
+    "Скільки коштує консультація?",
+    "Як записатись на прийом?",
+    "Графік роботи",
   ];
 
   const handleSendMessage = async (text?: string) => {
-    const messageText = typeof text === 'string' ? text : inputValue;
+    const messageText = typeof text === "string" ? text : inputValue;
     if (!messageText.trim() || isLoading) return;
 
-    const userMessage = { id: Date.now(), text: messageText, isBot: false };
-    setMessages(prev => [...prev, userMessage]);
-    setInputValue('');
+    // Додано timestamp
+    const userMessage = {
+      id: Date.now(),
+      text: messageText,
+      isBot: false,
+      timestamp: new Date(),
+    };
+    setMessages((prev) => [...prev, userMessage]);
+    setInputValue("");
     setIsLoading(true);
     setSuggestedQuestions([]);
 
-    const history = messages.map(m => ({
-      role: m.isBot ? 'assistant' : 'user',
-      content: m.text
+    const history = messages.map((m) => ({
+      role: m.isBot ? "assistant" : "user",
+      content: m.text,
     }));
 
     try {
       const res = await fetch(import.meta.env.VITE_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: messageText, history })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: messageText, history }),
       });
-      if (!res.ok) throw new Error('Server error');
+      if (!res.ok) throw new Error("Server error");
       const data = await res.json();
-      setMessages(prev => [...prev, { id: Date.now() + 1, text: data.reply, isBot: true }]);
-      if (data.suggested_questions?.length) setSuggestedQuestions(data.suggested_questions);
-    } catch {
-      setMessages(prev => [...prev, {
-        id: Date.now() + 1,
-        text: 'Сталася помилка. Спробуйте пізніше або зверніться до нас напряму.',
-        isBot: true
-      }]);
+
+      // Додано timestamp
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          text: data.reply,
+          isBot: true,
+          timestamp: new Date(),
+        },
+      ]);
+      if (data.suggested_questions?.length)
+        setSuggestedQuestions(data.suggested_questions);
+    } catch (error) {
+      // Додано вивід помилки для консолі браузера
+      console.error("Деталі помилки AI:", error);
+
+      // Додано timestamp
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          text: "Сталася помилка. Спробуйте пізніше або зверніться до нас напряму.",
+          isBot: true,
+          timestamp: new Date(),
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -123,13 +148,13 @@ export function AIChatBot() {
                   key={message.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
+                  className={`flex ${message.isBot ? "justify-start" : "justify-end"}`}
                 >
                   <div
                     className={`max-w-[80%] rounded-2xl px-4 py-2.5 ${
                       message.isBot
-                        ? 'bg-white border border-border'
-                        : 'bg-gradient-to-br from-primary to-secondary text-white'
+                        ? "bg-white border border-border"
+                        : "bg-gradient-to-br from-primary to-secondary text-white"
                     }`}
                   >
                     {message.isBot && (
@@ -142,7 +167,7 @@ export function AIChatBot() {
                     )}
                     <p
                       className={`text-sm leading-relaxed whitespace-pre-line ${
-                        message.isBot ? 'text-foreground/80' : 'text-white'
+                        message.isBot ? "text-foreground/80" : "text-white"
                       }`}
                     >
                       {message.text}
@@ -204,7 +229,7 @@ export function AIChatBot() {
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
                   placeholder="Напишіть повідомлення..."
                   className="flex-1 px-4 py-2.5 rounded-xl bg-muted/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                 />

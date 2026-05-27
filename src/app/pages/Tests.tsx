@@ -441,7 +441,7 @@ export default function Tests() {
     },
     {
       id: "perception",
-      title: "Тест на сприйняття (VAKD)",
+      title: "Тест на сприйняття інформації",
       description:
         "Визначте свій домінуючий тип сприйняття: візуал, аудіал, кінестетик або дигітал",
       icon: Brain,
