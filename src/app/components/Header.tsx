@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import logoPic from "./figma/L.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,7 +36,11 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-              <span className="text-white font-bold text-xl">L</span>
+              <img
+                src={logoPic}
+                alt="Logo"
+                className="w-full h-full object-cover rounded-xl"
+              />
             </div>
             <div className="hidden sm:block">
               <div className="font-bold text-xl text-foreground">LEVEL UP</div>
